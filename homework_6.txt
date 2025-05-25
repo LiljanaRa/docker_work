@@ -1,0 +1,49 @@
+1.  aws ec2 create-security-group --group-name 160924-liljana-sg --description "Security Group for MySQL and HTTPS and SSH"
+
+2.  aws ec2 authorize-security-group-ingress --group-id sg-0c316df8010b11f0f --protocol tcp --port 3306 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id sg-0c316df8010b11f0f --protocol tcp --port 443 --cidr 0.0.0.0/0
+
+3.  [
+    [
+        {
+            "FromPort": 22,
+            "IpProtocol": "tcp",
+            "IpRanges": [
+                {
+                    "CidrIp": "88.152.8.56/32",
+                    "Description": "SSH My IP"
+                }
+            ],
+            "Ipv6Ranges": [],
+            "PrefixListIds": [],
+            "ToPort": 22,
+            "UserIdGroupPairs": []
+        },
+        {
+            "FromPort": 3306,
+            "IpProtocol": "tcp",
+            "IpRanges": [
+                {
+                    "CidrIp": "0.0.0.0/0"
+                }
+            ],
+            "Ipv6Ranges": [],
+            "PrefixListIds": [],
+            "ToPort": 3306,
+            "UserIdGroupPairs": []
+        },
+        {
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "IpRanges": [
+                {
+                    "CidrIp": "0.0.0.0/0"
+                }
+            ],
+            "Ipv6Ranges": [],
+            "PrefixListIds": [],
+            "ToPort": 443,
+            "UserIdGroupPairs": []
+        }
+    ]
+]
